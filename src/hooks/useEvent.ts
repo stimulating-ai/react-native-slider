@@ -6,7 +6,8 @@ export function useEvent<T extends (...args: any[]) => any>(onEvent: T) {
 
   onEventRef.current = onEvent
 
-  const staticOnEvent = React.useCallback((...args) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const staticOnEvent = React.useCallback((...args: any[]) => {
     const currentOnEvent = onEventRef.current
     return currentOnEvent(...args)
   }, [])
