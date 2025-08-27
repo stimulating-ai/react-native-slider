@@ -36,11 +36,11 @@ const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumV
 
   const onMinChange = useEvent((min: number) => {
     minRef.current = min
-    onValueChange?.([min, maxRef.current].sort((a, b) => a - b) as [number, number])
+    return onValueChange?.([min, maxRef.current].sort((a, b) => a - b) as [number, number])
   })
   const onMaxChange = useEvent((max: number) => {
     maxRef.current = max
-    onValueChange?.([minRef.current, max].sort((a, b) => a - b) as [number, number])
+    return onValueChange?.([minRef.current, max].sort((a, b) => a - b) as [number, number])
   })
 
   // Min value thumb
