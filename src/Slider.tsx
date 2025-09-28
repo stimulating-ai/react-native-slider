@@ -24,6 +24,7 @@ export type SliderProps = RN.ViewProps & {
   vertical?: boolean;
   enabled?: boolean;
   slideOnTap?: boolean;
+  grabRadius?: number;
   trackHeight?: number;
   thumbSize?: number;
   thumbImage?: RN.ImageURISource;
@@ -52,6 +53,7 @@ const Slider = React.forwardRef<RN.View, SliderProps>((props: SliderProps, forwa
     vertical = false,
     enabled = true,
     slideOnTap = true,
+    grabRadius,
     trackHeight = 4,
     thumbSize = 15,
     thumbImage,
@@ -70,6 +72,7 @@ const Slider = React.forwardRef<RN.View, SliderProps>((props: SliderProps, forwa
     value: propValue,
     step,
     slideOnTap,
+    grabRadius,
     onValueChange
   })
 

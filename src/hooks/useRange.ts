@@ -9,12 +9,13 @@ type Props = {
   minimumValue: number;
   maximumValue: number;
   slideOnTap?: boolean;
+  grabRadius?: number;
   crossingAllowed?: boolean;
   onValueChange?: (range: [number, number]) => boolean | void;
 }
 
 /** Handle the state of a range slider */
-const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumValue, slideOnTap, onValueChange, crossingAllowed }: Props) => {
+const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumValue, slideOnTap, grabRadius, onValueChange, crossingAllowed }: Props) => {
   const [minProp, maxProp] = propValue
   const minRef = React.useRef<number>(minProp)
   const maxRef = React.useRef<number>(maxProp)
@@ -50,6 +51,7 @@ const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumV
     value: minProp,
     step,
     slideOnTap,
+    grabRadius,
     onValueChange: onMinChange
   })
 
@@ -60,6 +62,7 @@ const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumV
     value: maxProp,
     step,
     slideOnTap,
+    grabRadius,
     onValueChange: onMaxChange
   })
 

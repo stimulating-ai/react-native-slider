@@ -26,6 +26,7 @@ export type RangeSliderProps = RN.ViewProps & {
   vertical?: boolean;
   enabled?: boolean;
   slideOnTap?: boolean;
+  grabRadius?: number;
   trackHeight?: number;
   thumbSize?: number;
   thumbImage?: RN.ImageURISource;
@@ -57,6 +58,7 @@ const RangeSlider = React.forwardRef<RN.View, RangeSliderProps>((props: RangeSli
     vertical = false,
     enabled = true,
     slideOnTap = true,
+    grabRadius,
     trackHeight = 4,
     thumbSize = 15,
     thumbImage,
@@ -83,6 +85,7 @@ const RangeSlider = React.forwardRef<RN.View, RangeSliderProps>((props: RangeSli
     range: propValue,
     step,
     slideOnTap,
+    grabRadius,
     crossingAllowed,
     onValueChange
   })
