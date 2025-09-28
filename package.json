@@ -1,7 +1,7 @@
 {
   "name": "@react-native-assets/slider",
   "version": "11.0.11",
-  "homepage": "https://github.com/Sharcoux/slider",
+  "homepage": "https://github.com/stimulating-ai/react-native-slider",
   "description": "Lightweight slider for React-Native and React-Native-Web. A Range slider is included",
   "keywords": [
     "react-native",
@@ -11,14 +11,6 @@
     "slider",
     "range"
   ],
-  "author": {
-    "name": "François Billioud",
-    "email": "f.billioud@gmail.com"
-  },
-  "bugs": {
-    "url": "https://github.com/Sharcoux/slider/issues",
-    "email": "f.billioud@gmail.com"
-  },
   "license": "ISC",
   "scripts": {
     "test": "jest",
@@ -87,10 +79,5 @@
       "git add"
     ]
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Sharcoux/slider.git"
-  }
+  "main": "src/index.tsx"
 }
