@@ -24,6 +24,12 @@ export type SliderProps = RN.ViewProps & {
   vertical?: boolean;
   enabled?: boolean;
   slideOnTap?: boolean;
+  /**
+   * Defines the grab radius in pixels.
+   * When slideOnTap is true: limits tap-to-slide to within this pixel radius from current thumb position.
+   * When slideOnTap is false: defines the pixel proximity needed to grab the thumb.
+   * The pixel value is automatically converted to value units based on the slider's dimensions.
+   */
   grabRadius?: number;
   trackHeight?: number;
   thumbSize?: number;

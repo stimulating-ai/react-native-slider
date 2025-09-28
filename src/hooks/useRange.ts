@@ -90,8 +90,8 @@ const useRange = ({ step, range: propValue, minimumRange, minimumValue, maximumV
     return isMinClosest ? [value, maxValue] : [minValue, value]
   })
 
-  const canMove = useEvent((value: number) => {
-    return canMoveMax(value) || canMoveMin(value)
+  const canMove = useEvent((value: number, containerSize: number) => {
+    return canMoveMax(value, containerSize) || canMoveMin(value, containerSize)
   })
 
   return { updateMinValue, updateMaxValue, updateClosestValue, canMove, range }

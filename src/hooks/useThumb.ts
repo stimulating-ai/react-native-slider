@@ -53,14 +53,27 @@ const useThumb = (props: Props) => {
    * Indicates whether we accept to move to the specified position.
    * If the position is too far and slideOnTap is not set, we don't accept sliding there
    **/
-  const canMove = useEvent((newValue: number) => {
+  const canMove = useEvent((newValue: number, containerSize: number) => {
+    // Convert pixel grabRadius to value units if defined
+    const valueGrabRadius =
+      grabRadius !== undefined
+        ? (grabRadius / containerSize) * (maximumValue - minimumValue)
+        : undefined;
+
     if (slideOnTap) {
+      // When slideOnTap is true and grabRadius is defined,
+      // only allow tapping within the grab radius
+      if (valueGrabRadius !== undefined) {
+        return Math.abs(newValue - value) <= valueGrabRadius;
+      }
+      // When slideOnTap is true but no grabRadius, allow tap anywhere
       return true;
     }
 
+    // When slideOnTap is false, use grabRadius or default behavior
     return (
       Math.abs(newValue - value) <
-      (grabRadius ?? (step || (maximumValue - minimumValue) / 10 || 1))
+      (valueGrabRadius ?? (step || (maximumValue - minimumValue) / 10 || 1))
     );
   });
 

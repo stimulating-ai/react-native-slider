@@ -6,7 +6,7 @@ type Props<T extends number | [number, number]> = {
   onSlidingStart?: (value: T) => void
   onSlidingComplete?: (value: T) => void
   updateValue: (value: number, state: 'press' | 'release' | 'drag') => void;
-  canMove: (value: number) => boolean;
+  canMove: (value: number, containerSize: number) => boolean;
 }
 
 /** Creates the interactions with the slider */
@@ -14,14 +14,14 @@ const useDrag = <T extends number | [number, number], >({ value, canMove, update
   // Emit the events onSlidingStart and onSlidingComplete when we start / stop sliding
   const [sliding, setSliding] = React.useState(false)
 
-  const onPress = useEvent((newValue: number) => {
-    if (!canMove(newValue)) return
+  const onPress = useEvent((newValue: number, containerSize: number) => {
+    if (!canMove(newValue, containerSize)) return
     onSlidingStart?.(value)
     setSliding(true)
     updateValue(newValue, 'press')
   })
 
-  const onRelease = useEvent((newValue: number) => {
+  const onRelease = useEvent((newValue: number, _containerSize: number) => {
     if (!sliding) return
     setSliding(false)
     updateValue(newValue, 'release')
@@ -34,7 +34,7 @@ const useDrag = <T extends number | [number, number], >({ value, canMove, update
     if (sliding) return fireSlidingComplete
   }, [fireSlidingComplete, sliding])
 
-  const onMove = useEvent((value: number) => {
+  const onMove = useEvent((value: number, _containerSize: number) => {
     if (sliding) updateValue(value, 'drag')
   })
 
